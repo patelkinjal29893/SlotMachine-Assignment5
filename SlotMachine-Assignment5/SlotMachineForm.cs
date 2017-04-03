@@ -1,4 +1,10 @@
-﻿using System;
+﻿// App Name : SlotMachine Form
+// Author Name : Kinjal Patel
+// Student ID : 200334364
+// App Creation Date : April 3rd, 2017
+// App Description : This is displays all different combinations o winning and loosing for Slot Machine Game
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -289,6 +295,11 @@ namespace SlotMachine_Assignment5
             {
                 MessageBox.Show("Please enter a valid bet amount");
             }
+        }
+
+        private void PowerButtonPictureBox_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 
