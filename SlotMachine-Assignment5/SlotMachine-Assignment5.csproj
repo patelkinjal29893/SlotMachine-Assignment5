@@ -106,6 +106,7 @@
     <Content Include="Resources\spin.gif" />
     <Content Include="Resources\spin_disabled.gif" />
     <Content Include="Resources\spin_pressed.gif" />
+    <None Include="Resources\sword.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

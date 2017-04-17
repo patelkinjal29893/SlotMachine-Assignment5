@@ -106,7 +106,8 @@ namespace SlotMachine_Assignment5
         private void showWinMessage()
         {
             playerMoney += winnings;
-            MessageBox.Show("You Won: $" + winnings, "Winner!");
+            //MessageBox.Show("You Won: $" + winnings, "Winner!");
+            WinnerPaidTextBox.Text = Convert.ToString(winnings);
             resetFruitTally();
             checkJackPot();
         }
@@ -264,6 +265,7 @@ namespace SlotMachine_Assignment5
 
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
+            
             playerBet = 10; // default bet amount
 
             if (playerMoney == 0)
