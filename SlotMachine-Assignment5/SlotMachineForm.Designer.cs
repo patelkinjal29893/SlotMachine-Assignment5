@@ -38,18 +38,18 @@
             this.BetTextBox = new System.Windows.Forms.TextBox();
             this.WinnerPaidTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.BetTwentyFivePictureBox = new System.Windows.Forms.PictureBox();
+            this.BetFiftyPictureBox = new System.Windows.Forms.PictureBox();
+            this.BetHundredPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.SpinButtonPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelOnePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelTwoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelThreePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PowerButtonPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetTwentyFivePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetFiftyPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetHundredPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // SpinButtonPictureBox
@@ -156,33 +156,34 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // BetTwentyFivePictureBox
             // 
-            this.pictureBox2.Image = global::SlotMachine_Assignment5.Properties.Resources.bet25;
-            this.pictureBox2.Location = new System.Drawing.Point(183, 434);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.BetTwentyFivePictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet25;
+            this.BetTwentyFivePictureBox.Location = new System.Drawing.Point(183, 434);
+            this.BetTwentyFivePictureBox.Name = "BetTwentyFivePictureBox";
+            this.BetTwentyFivePictureBox.Size = new System.Drawing.Size(48, 50);
+            this.BetTwentyFivePictureBox.TabIndex = 12;
+            this.BetTwentyFivePictureBox.TabStop = false;
+            this.BetTwentyFivePictureBox.Click += new System.EventHandler(this.BetTwentyFivePictureBox_Click);
             // 
-            // pictureBox3
+            // BetFiftyPictureBox
             // 
-            this.pictureBox3.Image = global::SlotMachine_Assignment5.Properties.Resources.bet50;
-            this.pictureBox3.Location = new System.Drawing.Point(237, 434);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.BetFiftyPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet50;
+            this.BetFiftyPictureBox.Location = new System.Drawing.Point(237, 434);
+            this.BetFiftyPictureBox.Name = "BetFiftyPictureBox";
+            this.BetFiftyPictureBox.Size = new System.Drawing.Size(48, 50);
+            this.BetFiftyPictureBox.TabIndex = 12;
+            this.BetFiftyPictureBox.TabStop = false;
             // 
-            // pictureBox4
+            // BetHundredPictureBox
             // 
-            this.pictureBox4.Image = global::SlotMachine_Assignment5.Properties.Resources.bet100;
-            this.pictureBox4.Location = new System.Drawing.Point(290, 434);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
+            this.BetHundredPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet100;
+            this.BetHundredPictureBox.Location = new System.Drawing.Point(290, 434);
+            this.BetHundredPictureBox.Name = "BetHundredPictureBox";
+            this.BetHundredPictureBox.Size = new System.Drawing.Size(48, 50);
+            this.BetHundredPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BetHundredPictureBox.TabIndex = 13;
+            this.BetHundredPictureBox.TabStop = false;
             // 
             // SlotMachineForm
             // 
@@ -192,9 +193,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(450, 521);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.BetHundredPictureBox);
+            this.Controls.Add(this.BetFiftyPictureBox);
+            this.Controls.Add(this.BetTwentyFivePictureBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.WinnerPaidTextBox);
             this.Controls.Add(this.BetTextBox);
@@ -218,9 +219,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReelThreePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PowerButtonPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetTwentyFivePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetFiftyPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetHundredPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,8 +238,8 @@
         private System.Windows.Forms.TextBox BetTextBox;
         private System.Windows.Forms.TextBox WinnerPaidTextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox BetTwentyFivePictureBox;
+        private System.Windows.Forms.PictureBox BetFiftyPictureBox;
+        private System.Windows.Forms.PictureBox BetHundredPictureBox;
     }
 }

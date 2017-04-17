@@ -22,6 +22,7 @@ namespace SlotMachine_Assignment5
         private int playerMoney = 1000;
         private int winnings = 0;
         private int jackpot = 5000;
+        private int _currentJackpot;
         private float turn = 0.0f;
         private int playerBet = 0;
         private float winNumber = 0.0f;
@@ -48,7 +49,7 @@ namespace SlotMachine_Assignment5
 
         /* Utility function to show Player Stats */
         private void showPlayerStats()
-        {
+        {            
             winRatio = winNumber / turn;
             lossRatio = lossNumber / turn;
             string stats = "";
@@ -59,7 +60,13 @@ namespace SlotMachine_Assignment5
             stats += ("Losses: " + lossNumber + "\n");
             stats += ("Win Ratio: " + (winRatio * 100) + "%\n");
             stats += ("Loss Ratio: " + (lossRatio * 100) + "%\n");
-            MessageBox.Show(stats, "Player Stats");
+
+            TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
+            playerBet = 0;
+            stats += (TotalCreditsTextBox.Text = Convert.ToString(playerMoney));
+            WinnerPaidTextBox.Text = Convert.ToString(winnings);
+            _currentJackpot = jackpot + (playerBet / 10);
+            JackpotTextBox.Text = Convert.ToString(_currentJackpot);
         }
 
         /* Utility function to reset all fruit tallies*/
@@ -96,7 +103,7 @@ namespace SlotMachine_Assignment5
             var jackPotWin = this.random.Next(51) + 1;
             if (jackPotTry == jackPotWin)
             {
-                MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
+                JackpotTextBox.Text = Convert.ToString(jackpot);                
                 playerMoney += jackpot;
                 jackpot = 1000;
             }
@@ -105,8 +112,7 @@ namespace SlotMachine_Assignment5
         /* Utility function to show a win message and increase player money */
         private void showWinMessage()
         {
-            playerMoney += winnings;
-            //MessageBox.Show("You Won: $" + winnings, "Winner!");
+            playerMoney += winnings;            
             WinnerPaidTextBox.Text = Convert.ToString(winnings);
             resetFruitTally();
             checkJackPot();
@@ -116,7 +122,8 @@ namespace SlotMachine_Assignment5
         private void showLossMessage()
         {
             playerMoney -= playerBet;
-            MessageBox.Show("You Lost!", "Loss!");
+            jackpot = playerBet + jackpot;
+            WinnerPaidTextBox.Text = "0";                         
             resetFruitTally();
         }
 
@@ -131,7 +138,11 @@ namespace SlotMachine_Assignment5
     e.g. Bar - Orange - Banana */
         private string[] Reels()
         {
+            //An array for change images in reels
+            PictureBox[] reel_spin = { ReelOnePictureBox, ReelTwoPictureBox, ReelThreePictureBox };
+
             string[] betLine = { " ", " ", " " };
+
             int[] outCome = { 0, 0, 0 };
 
             for (var spin = 0; spin < 3; spin++)
@@ -139,42 +150,58 @@ namespace SlotMachine_Assignment5
                 outCome[spin] = this.random.Next(65) + 1;
 
                 if (checkRange(outCome[spin], 1, 27))
-                {  // 41.5% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.blank;
+                    // 41.5% probability
                     betLine[spin] = "blank";
                     blanks++;
                 }
                 else if (checkRange(outCome[spin], 28, 37))
-                { // 15.4% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.grapes;
+                    // 15.4% probability
                     betLine[spin] = "Grapes";
                     grapes++;
                 }
                 else if (checkRange(outCome[spin], 38, 46))
-                { // 13.8% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.banana;
+                    // 13.8% probability
                     betLine[spin] = "Banana";
                     bananas++;
                 }
                 else if (checkRange(outCome[spin], 47, 54))
-                { // 12.3% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.orange;
+                    // 12.3% probability
                     betLine[spin] = "Orange";
                     oranges++;
                 }
                 else if (checkRange(outCome[spin], 55, 59))
-                { //  7.7% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.cherry;
+                    //  7.7% probability
                     betLine[spin] = "Cherry";
                     cherries++;
                 }
                 else if (checkRange(outCome[spin], 60, 62))
-                { //  4.6% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.bar;
+                    //  4.6% probability
                     betLine[spin] = "Bar";
                     bars++;
                 }
                 else if (checkRange(outCome[spin], 63, 64))
-                { //  3.1% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.bell;
+                    //  3.1% probability
                     betLine[spin] = "Bell";
                     bells++;
                 }
                 else if (checkRange(outCome[spin], 65, 65))
-                { //  1.5% probability
+                {
+                    reel_spin[spin].Image = Properties.Resources.seven;
+                    //  1.5% probability
                     betLine[spin] = "Seven";
                     sevens++;
                 }
@@ -265,8 +292,18 @@ namespace SlotMachine_Assignment5
 
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
-            
-            playerBet = 10; // default bet amount
+            JackpotTextBox.Text = Convert.ToString(jackpot);
+            WinnerPaidTextBox.Text = "";
+
+            if(BetTextBox.Text != "")
+            {
+                playerBet = Convert.ToInt32(BetTextBox.Text);
+                BetTextBox.Text = "";            
+            }
+            else
+            {
+                playerBet = 10;// default bet amount
+            }            
 
             if (playerMoney == 0)
             {
@@ -288,7 +325,7 @@ namespace SlotMachine_Assignment5
             {
                 spinResult = Reels();
                 fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                MessageBox.Show(fruits);
+                Reels();
                 determineWinnings();
                 turn++;
                 showPlayerStats();
@@ -298,11 +335,21 @@ namespace SlotMachine_Assignment5
                 MessageBox.Show("Please enter a valid bet amount");
             }
         }
-
+        /// <summary>
+        /// This is handler for Power Button to Terminate Application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PowerButtonPictureBox_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void BetTwentyFivePictureBox_Click(object sender, EventArgs e)
+        {
+            BetTextBox.Text = "25";
+        }
+
     }
 
 }
