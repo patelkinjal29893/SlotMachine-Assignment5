@@ -350,6 +350,28 @@ namespace SlotMachine_Assignment5
             BetTextBox.Text = "25";
         }
 
+        private void BetFiftyPictureBox_Click(object sender, EventArgs e)
+        {
+            BetTextBox.Text = "50";
+        }
+
+        private void BetHundredPictureBox_Click(object sender, EventArgs e)
+        {
+            BetTextBox.Text = "100";
+        }
+
+        private void SlotMachineForm_Load(object sender, EventArgs e)
+        {
+            TotalCreditsTextBox.Text = Convert.ToString(playerMoney);   
+        }
+
+        private void ResetPictureBox_Click(object sender, EventArgs e)
+        {
+            TotalCreditsTextBox.Text = "";
+            BetTextBox.Text = "";
+            WinnerPaidTextBox.Text = "";
+            JackpotTextBox.Text = "";        
+        }
     }
 
 }
