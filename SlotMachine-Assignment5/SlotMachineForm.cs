@@ -60,13 +60,10 @@ namespace SlotMachine_Assignment5
             stats += ("Losses: " + lossNumber + "\n");
             stats += ("Win Ratio: " + (winRatio * 100) + "%\n");
             stats += ("Loss Ratio: " + (lossRatio * 100) + "%\n");
-
-            TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
+            
             playerBet = 0;
             stats += (TotalCreditsTextBox.Text = Convert.ToString(playerMoney));
-            WinnerPaidTextBox.Text = Convert.ToString(winnings);
-            _currentJackpot = jackpot + (playerBet / 10);
-            JackpotTextBox.Text = Convert.ToString(_currentJackpot);
+            WinnerPaidTextBox.Text = Convert.ToString(winnings);          
         }
 
         /* Utility function to reset all fruit tallies*/
@@ -85,14 +82,25 @@ namespace SlotMachine_Assignment5
         /* Utility function to reset the player stats */
         private void resetAll()
         {
-            playerMoney = 1000;
-            winnings = 0;
-            jackpot = 5000;
-            turn = 0;
-            playerBet = 0;
-            winNumber = 0;
-            lossNumber = 0;
-            winRatio = 0.0f;
+            if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                playerMoney = 1000;
+                winnings = 0;
+                jackpot = 5000;
+                turn = 0;
+                playerBet = 0;
+                winNumber = 0;
+                lossNumber = 0;
+                winRatio = 0.0f;
+
+                WinnerPaidTextBox.Text = "";
+                ReelOnePictureBox.Image = Properties.Resources.bell;
+                ReelTwoPictureBox.Image = Properties.Resources.orange;
+                ReelThreePictureBox.Image = Properties.Resources.banana;
+
+                TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
+                BetTextBox.Text = "0";
+            }
         }
 
         /* Check to see if the player won the jackpot */
@@ -103,9 +111,10 @@ namespace SlotMachine_Assignment5
             var jackPotWin = this.random.Next(51) + 1;
             if (jackPotTry == jackPotWin)
             {
-                JackpotTextBox.Text = Convert.ToString(jackpot);                
+                MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");                
                 playerMoney += jackpot;
-                jackpot = 1000;
+                jackpot = 5000;
+                JackpotTextBox.Text = Convert.ToString(jackpot);
             }
         }
 
@@ -121,9 +130,7 @@ namespace SlotMachine_Assignment5
         /* Utility function to show a loss message and reduce player money */
         private void showLossMessage()
         {
-            playerMoney -= playerBet;
-            jackpot = playerBet + jackpot;
-            WinnerPaidTextBox.Text = "0";                         
+            playerMoney -= playerBet;                                              
             resetFruitTally();
         }
 
@@ -150,59 +157,59 @@ namespace SlotMachine_Assignment5
                 outCome[spin] = this.random.Next(65) + 1;
 
                 if (checkRange(outCome[spin], 1, 27))
-                {
-                    reel_spin[spin].Image = Properties.Resources.blank;
+                {                    
                     // 41.5% probability
                     betLine[spin] = "blank";
+                    reel_spin[spin].Image = Properties.Resources.blank;
                     blanks++;
                 }
                 else if (checkRange(outCome[spin], 28, 37))
-                {
-                    reel_spin[spin].Image = Properties.Resources.grapes;
+                {                    
                     // 15.4% probability
                     betLine[spin] = "Grapes";
+                    reel_spin[spin].Image = Properties.Resources.grapes;
                     grapes++;
                 }
                 else if (checkRange(outCome[spin], 38, 46))
-                {
-                    reel_spin[spin].Image = Properties.Resources.banana;
+                {                   
                     // 13.8% probability
                     betLine[spin] = "Banana";
+                    reel_spin[spin].Image = Properties.Resources.banana;
                     bananas++;
                 }
                 else if (checkRange(outCome[spin], 47, 54))
-                {
-                    reel_spin[spin].Image = Properties.Resources.orange;
+                {                   
                     // 12.3% probability
                     betLine[spin] = "Orange";
+                    reel_spin[spin].Image = Properties.Resources.orange;
                     oranges++;
                 }
                 else if (checkRange(outCome[spin], 55, 59))
-                {
-                    reel_spin[spin].Image = Properties.Resources.cherry;
+                {                   
                     //  7.7% probability
                     betLine[spin] = "Cherry";
+                    reel_spin[spin].Image = Properties.Resources.cherry;
                     cherries++;
                 }
                 else if (checkRange(outCome[spin], 60, 62))
-                {
-                    reel_spin[spin].Image = Properties.Resources.bar;
+                {                    
                     //  4.6% probability
                     betLine[spin] = "Bar";
+                    reel_spin[spin].Image = Properties.Resources.bar;
                     bars++;
                 }
                 else if (checkRange(outCome[spin], 63, 64))
                 {
-                    reel_spin[spin].Image = Properties.Resources.bell;
                     //  3.1% probability
                     betLine[spin] = "Bell";
+                    reel_spin[spin].Image = Properties.Resources.bell;
                     bells++;
                 }
                 else if (checkRange(outCome[spin], 65, 65))
-                {
-                    reel_spin[spin].Image = Properties.Resources.seven;
+                {                   
                     //  1.5% probability
                     betLine[spin] = "Seven";
+                    reel_spin[spin].Image = Properties.Resources.seven;
                     sevens++;
                 }
 
@@ -289,22 +296,18 @@ namespace SlotMachine_Assignment5
             }
 
         }
-
+        /// <summary>
+        /// This is handler for Spin Button Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
-            JackpotTextBox.Text = Convert.ToString(jackpot);
-            WinnerPaidTextBox.Text = "";
-
-            if(BetTextBox.Text != "")
-            {
-                playerBet = Convert.ToInt32(BetTextBox.Text);
-                BetTextBox.Text = "";            
-            }
-            else
-            {
-                playerBet = 10;// default bet amount
-            }            
-
+            //playerBet = 0;
+            //WinnerPaidTextBox.Text = Convert.ToString(winnings);
+            //playerBet = Convert.ToInt32(BetTextBox.Text);
+            JackpotTextBox.Text = "";
+                                 
             if (playerMoney == 0)
             {
                 if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -324,17 +327,26 @@ namespace SlotMachine_Assignment5
             else if (playerBet <= playerMoney)
             {
                 spinResult = Reels();
-                fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                Reels();
+                TotalCreditsTextBox.Text = Convert.ToString(playerMoney);                
                 determineWinnings();
+                TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
                 turn++;
-                showPlayerStats();
+
+
+                if (playerMoney <= 0)
+                {
+                    if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        resetAll();                        
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Please enter a valid bet amount");
             }
         }
+       
         /// <summary>
         /// This is handler for Power Button to Terminate Application
         /// </summary>
@@ -342,35 +354,44 @@ namespace SlotMachine_Assignment5
         /// <param name="e"></param>
         private void PowerButtonPictureBox_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
+            DialogResult result = MessageBox.Show("Are you Sure you wants to quit the game?", "Exit", MessageBoxButtons.OKCancel);
 
-        private void BetTwentyFivePictureBox_Click(object sender, EventArgs e)
-        {
-            BetTextBox.Text = "25";
+            if(result == DialogResult.OK)
+            {
+                MessageBox.Show("Thank you for Playing with Slot Machine..!!!");
+                Application.Exit();
+            }            
+            else
+            {
+                //It will not allow user to QUIT from the Game
+            }
         }
-
-        private void BetFiftyPictureBox_Click(object sender, EventArgs e)
-        {
-            BetTextBox.Text = "50";
-        }
-
-        private void BetHundredPictureBox_Click(object sender, EventArgs e)
-        {
-            BetTextBox.Text = "100";
-        }
-
+        /// <summary>
+        /// This is handler for Slot Machine Load Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>                      
         private void SlotMachineForm_Load(object sender, EventArgs e)
         {
-            TotalCreditsTextBox.Text = Convert.ToString(playerMoney);   
+            TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
+            BetTextBox.Text = "0";
+            WinnerPaidTextBox.Text = "0";
+            
+            // Displays Different Images in appropriate PictureBoxes
+            ReelOnePictureBox.Image = Properties.Resources.bell;
+            ReelTwoPictureBox.Image = Properties.Resources.orange;
+            ReelThreePictureBox.Image = Properties.Resources.banana;
+
         }
 
+        /// <summary>
+        /// This is handler for reset all credit click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
-            TotalCreditsTextBox.Text = "";
-            BetTextBox.Text = "";
-            WinnerPaidTextBox.Text = "";
-            JackpotTextBox.Text = "";        
+            resetAll();
         }
     }
 
