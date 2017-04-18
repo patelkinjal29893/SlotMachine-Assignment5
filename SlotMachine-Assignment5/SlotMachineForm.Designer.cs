@@ -56,7 +56,7 @@
             // 
             this.SpinButtonPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.SpinButtonPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.spin;
-            this.SpinButtonPictureBox.Location = new System.Drawing.Point(344, 434);
+            this.SpinButtonPictureBox.Location = new System.Drawing.Point(337, 415);
             this.SpinButtonPictureBox.Name = "SpinButtonPictureBox";
             this.SpinButtonPictureBox.Size = new System.Drawing.Size(52, 50);
             this.SpinButtonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -67,7 +67,7 @@
             // ReelOnePictureBox
             // 
             this.ReelOnePictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bell;
-            this.ReelOnePictureBox.Location = new System.Drawing.Point(70, 219);
+            this.ReelOnePictureBox.Location = new System.Drawing.Point(68, 211);
             this.ReelOnePictureBox.Name = "ReelOnePictureBox";
             this.ReelOnePictureBox.Size = new System.Drawing.Size(85, 127);
             this.ReelOnePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,7 +77,7 @@
             // ReelTwoPictureBox
             // 
             this.ReelTwoPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.orange;
-            this.ReelTwoPictureBox.Location = new System.Drawing.Point(178, 219);
+            this.ReelTwoPictureBox.Location = new System.Drawing.Point(175, 212);
             this.ReelTwoPictureBox.Name = "ReelTwoPictureBox";
             this.ReelTwoPictureBox.Size = new System.Drawing.Size(90, 127);
             this.ReelTwoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -87,7 +87,7 @@
             // ReelThreePictureBox
             // 
             this.ReelThreePictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.banana;
-            this.ReelThreePictureBox.Location = new System.Drawing.Point(288, 219);
+            this.ReelThreePictureBox.Location = new System.Drawing.Point(283, 211);
             this.ReelThreePictureBox.Name = "ReelThreePictureBox";
             this.ReelThreePictureBox.Size = new System.Drawing.Size(91, 127);
             this.ReelThreePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +97,7 @@
             // PowerButtonPictureBox
             // 
             this.PowerButtonPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.powerbutton;
-            this.PowerButtonPictureBox.Location = new System.Drawing.Point(64, 434);
+            this.PowerButtonPictureBox.Location = new System.Drawing.Point(57, 415);
             this.PowerButtonPictureBox.Name = "PowerButtonPictureBox";
             this.PowerButtonPictureBox.Size = new System.Drawing.Size(51, 50);
             this.PowerButtonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,7 +110,7 @@
             this.JackpotTextBox.BackColor = System.Drawing.Color.Gray;
             this.JackpotTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JackpotTextBox.ForeColor = System.Drawing.Color.Red;
-            this.JackpotTextBox.Location = new System.Drawing.Point(175, 156);
+            this.JackpotTextBox.Location = new System.Drawing.Point(170, 152);
             this.JackpotTextBox.Name = "JackpotTextBox";
             this.JackpotTextBox.ReadOnly = true;
             this.JackpotTextBox.Size = new System.Drawing.Size(104, 27);
@@ -120,7 +120,7 @@
             // 
             this.TotalCreditsTextBox.BackColor = System.Drawing.Color.Gray;
             this.TotalCreditsTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalCreditsTextBox.Location = new System.Drawing.Point(70, 364);
+            this.TotalCreditsTextBox.Location = new System.Drawing.Point(67, 354);
             this.TotalCreditsTextBox.Name = "TotalCreditsTextBox";
             this.TotalCreditsTextBox.ReadOnly = true;
             this.TotalCreditsTextBox.Size = new System.Drawing.Size(100, 27);
@@ -130,7 +130,7 @@
             // 
             this.BetTextBox.BackColor = System.Drawing.Color.Gray;
             this.BetTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BetTextBox.Location = new System.Drawing.Point(193, 364);
+            this.BetTextBox.Location = new System.Drawing.Point(186, 353);
             this.BetTextBox.Name = "BetTextBox";
             this.BetTextBox.ReadOnly = true;
             this.BetTextBox.Size = new System.Drawing.Size(60, 27);
@@ -140,7 +140,7 @@
             // 
             this.WinnerPaidTextBox.BackColor = System.Drawing.Color.Gray;
             this.WinnerPaidTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WinnerPaidTextBox.Location = new System.Drawing.Point(279, 364);
+            this.WinnerPaidTextBox.Location = new System.Drawing.Point(269, 353);
             this.WinnerPaidTextBox.Name = "WinnerPaidTextBox";
             this.WinnerPaidTextBox.ReadOnly = true;
             this.WinnerPaidTextBox.Size = new System.Drawing.Size(100, 27);
@@ -149,7 +149,7 @@
             // ResetPictureBox
             // 
             this.ResetPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.reset;
-            this.ResetPictureBox.Location = new System.Drawing.Point(123, 434);
+            this.ResetPictureBox.Location = new System.Drawing.Point(116, 415);
             this.ResetPictureBox.Name = "ResetPictureBox";
             this.ResetPictureBox.Size = new System.Drawing.Size(49, 50);
             this.ResetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,33 +160,30 @@
             // BetTwentyFivePictureBox
             // 
             this.BetTwentyFivePictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet25;
-            this.BetTwentyFivePictureBox.Location = new System.Drawing.Point(183, 434);
+            this.BetTwentyFivePictureBox.Location = new System.Drawing.Point(176, 415);
             this.BetTwentyFivePictureBox.Name = "BetTwentyFivePictureBox";
             this.BetTwentyFivePictureBox.Size = new System.Drawing.Size(48, 50);
             this.BetTwentyFivePictureBox.TabIndex = 12;
             this.BetTwentyFivePictureBox.TabStop = false;
-            this.BetTwentyFivePictureBox.Click += new System.EventHandler(this.BetTwentyFivePictureBox_Click);
             // 
             // BetFiftyPictureBox
             // 
             this.BetFiftyPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet50;
-            this.BetFiftyPictureBox.Location = new System.Drawing.Point(237, 434);
+            this.BetFiftyPictureBox.Location = new System.Drawing.Point(230, 415);
             this.BetFiftyPictureBox.Name = "BetFiftyPictureBox";
             this.BetFiftyPictureBox.Size = new System.Drawing.Size(48, 50);
             this.BetFiftyPictureBox.TabIndex = 12;
             this.BetFiftyPictureBox.TabStop = false;
-            this.BetFiftyPictureBox.Click += new System.EventHandler(this.BetFiftyPictureBox_Click);
             // 
             // BetHundredPictureBox
             // 
             this.BetHundredPictureBox.Image = global::SlotMachine_Assignment5.Properties.Resources.bet100;
-            this.BetHundredPictureBox.Location = new System.Drawing.Point(290, 434);
+            this.BetHundredPictureBox.Location = new System.Drawing.Point(283, 415);
             this.BetHundredPictureBox.Name = "BetHundredPictureBox";
             this.BetHundredPictureBox.Size = new System.Drawing.Size(48, 50);
             this.BetHundredPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BetHundredPictureBox.TabIndex = 13;
             this.BetHundredPictureBox.TabStop = false;
-            this.BetHundredPictureBox.Click += new System.EventHandler(this.BetHundredPictureBox_Click);
             // 
             // SlotMachineForm
             // 
@@ -194,7 +191,7 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImage = global::SlotMachine_Assignment5.Properties.Resources.slotmachine;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(446, 517);
+            this.ClientSize = new System.Drawing.Size(434, 505);
             this.ControlBox = false;
             this.Controls.Add(this.BetHundredPictureBox);
             this.Controls.Add(this.BetFiftyPictureBox);

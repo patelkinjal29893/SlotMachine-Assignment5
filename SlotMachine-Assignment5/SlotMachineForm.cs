@@ -303,11 +303,57 @@ namespace SlotMachine_Assignment5
         /// <param name="e"></param>
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
-            //playerBet = 0;
-            //WinnerPaidTextBox.Text = Convert.ToString(winnings);
-            //playerBet = Convert.ToInt32(BetTextBox.Text);
+            playerBet = 0;
+            WinnerPaidTextBox.Text = winnings.ToString();
+            playerBet = Convert.ToInt32(BetTextBox.Text);
             JackpotTextBox.Text = "";
-                                 
+
+            //It will set Default Bet value 10
+            if (playerBet == 0)
+            {
+                _checkMoney(10);
+            }
+            else
+            {
+                if (playerMoney == 0)
+                {
+                    if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        //Reset all textbox values if money is 0
+                        resetAll();
+                    }
+                }
+                else if (playerBet > playerMoney)
+                {
+                    MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
+                    BetTextBox.Text = "0";
+                    playerBet = 0;
+                }
+                else if (playerBet < 0)
+                {
+                    MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
+                }
+                else if (playerBet <= playerMoney)
+                {
+                    spinResult = Reels();
+                    determineWinnings();
+                    turn++;
+                    TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
+                    BetTextBox.Text = "0";
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid bet amount");
+                }
+            }
+        }
+
+        /// <summary>
+        /// This is handler for private Event to check Balance during game
+        /// </summary>
+        /// <param name="bet"></param>
+        private void _checkMoney(int bet)
+        {
             if (playerMoney == 0)
             {
                 if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -326,27 +372,11 @@ namespace SlotMachine_Assignment5
             }
             else if (playerBet <= playerMoney)
             {
-                spinResult = Reels();
-                TotalCreditsTextBox.Text = Convert.ToString(playerMoney);                
-                determineWinnings();
-                TotalCreditsTextBox.Text = Convert.ToString(playerMoney);
-                turn++;
-
-
-                if (playerMoney <= 0)
-                {
-                    if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        resetAll();                        
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid bet amount");
+                playerBet += bet;
+                TotalCreditsTextBox.Text = playerMoney.ToString();
+                BetTextBox.Text = playerBet.ToString();
             }
         }
-       
         /// <summary>
         /// This is handler for Power Button to Terminate Application
         /// </summary>
@@ -365,7 +395,7 @@ namespace SlotMachine_Assignment5
             {
                 //It will not allow user to QUIT from the Game
             }
-        }
+        }        
         /// <summary>
         /// This is handler for Slot Machine Load Event
         /// </summary>
@@ -394,5 +424,4 @@ namespace SlotMachine_Assignment5
             resetAll();
         }
     }
-
 }
